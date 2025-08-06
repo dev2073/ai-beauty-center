@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="it" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SalonBooking - Sistema di Prenotazione per Saloni di Bellezza</title>
+    <meta
+      name="description"
+      content="Il sistema di prenotazione smart per saloni di bellezza e parrucchieri indipendenti. App dedicata ai clienti, calendario intuitivo per il staff."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+                glow: "hsl(var(--primary-glow))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              glow: {
+                "0%, 100%": { opacity: "1" },
+                "50%": { opacity: "0.5" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(30px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite",
+              slideUp: "slideUp 0.6s ease-out",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen bg-background text-foreground font-sans">
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <!-- Background Image with Overlay -->
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('img/hero-salon.jpg')"
+      ></div>
+      <div class="absolute inset-0 hero-bg"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 container mx-auto px-4 text-center text-white">
+        <div class="max-w-4xl mx-auto animate-slideUp">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            🗓️ Gestisci facilmente gli
+            <span
+              class="text-gradient bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent"
+              >appuntamenti</span
+            >
+            del tuo salone
+          </h1>
+
+          <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+            Il sistema di prenotazione smart pensato per saloni di bellezza e
+            parrucchieri indipendenti.<br />
+            <span class="font-semibold"
+              >App dedicata ai tuoi clienti, calendario intuitivo per il tuo
+              staff.</span
+            >
+          </p>
+
+          <button
+            onclick="openSurvey()"
+            class="btn-primary text-lg px-8 py-6 rounded-xl font-semibold hover:shadow-2xl inline-flex items-center gap-2"
+          >
+            🧪 Partecipa al sondaggio
+          </button>
+
+          <p class="mt-4 text-white/70 text-sm">
+            ✨ Solo 2 minuti per aiutarci a creare la soluzione perfetta
+          </p>
+        </div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div
+        class="absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full animate-float"
+      ></div>
+      <div
+        class="absolute bottom-32 right-16 w-12 h-12 bg-primary-glow/20 rounded-full animate-float"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute top-1/3 right-20 w-8 h-8 bg-white/15 rounded-full animate-float"
+        style="animation-delay: 2s"
+      ></div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gradient-to-b from-background to-secondary/30">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">
+            Perché scegliere il nostro sistema?
+          </h2>
+          <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Tre vantaggi chiave che trasformeranno il modo di gestire il tuo
+            salone
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Benefit 1 -->
+          <div
+            class="card-elegant rounded-2xl p-8 text-center group hover:scale-105 transition-all duration-300"
+            style="animation-delay: 0s"
+          >
+            <div class="mb-6 relative overflow-hidden rounded-xl">
+              <img
+                src="img/app-preview.jpg"
+                alt="Prenotazioni 24/7"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+              ></div>
+            </div>
+
+            <div class="text-4xl mb-4 group-hover:animate-bounce">📲</div>
+
+            <h3 class="text-2xl font-bold mb-4 text-foreground">
+              Prenotazioni 24/7
+            </h3>
+
+            <p class="text-muted-foreground text-lg leading-relaxed">
+              I clienti prenotano tramite app anche mentre tu dormi.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div
+            class="card-elegant rounded-2xl p-8 text-center group hover:scale-105 transition-all duration-300"
+            style="animation-delay: 0.2s"
+          >
+            <div class="mb-6 relative overflow-hidden rounded-xl">
+              <img
+                src="img/dashboard-preview.jpg"
+                alt="Calendario facile per il salone"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+              ></div>
+            </div>
+
+            <div class="text-4xl mb-4 group-hover:animate-bounce">🖥️</div>
+
+            <h3 class="text-2xl font-bold mb-4 text-foreground">
+              Calendario facile per il salone
+            </h3>
+
+            <p class="text-muted-foreground text-lg leading-relaxed">
+              Gestione appuntamenti dal web, massima semplicità e zero stress.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div
+            class="card-elegant rounded-2xl p-8 text-center group hover:scale-105 transition-all duration-300"
+            style="animation-delay: 0.4s"
+          >
+            <div
+              class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-indigo-500 to-pink-600 flex items-center justify-center text-3xl group-hover:animate-bounce"
+            >
+              🚫
+            </div>
+
+            <div class="text-4xl mb-4 group-hover:animate-bounce">🚫</div>
+
+            <h3 class="text-2xl font-bold mb-4 text-foreground">
+              Nessuna commissione
+            </h3>
+
+            <p class="text-muted-foreground text-lg leading-relaxed">
+              Solo un piccolo abbonamento mensile, nessuna fee sulle
+              prenotazioni.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section
+      class="py-20 bg-gradient-to-r from-primary/10 via-accent/10 to-primary-glow/10 relative overflow-hidden"
+    >
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div
+          class="absolute top-10 left-10 w-32 h-32 border-2 border-primary rounded-full animate-float"
+        ></div>
+        <div
+          class="absolute bottom-20 right-20 w-24 h-24 border-2 border-primary-glow rounded-full animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-accent rounded-full animate-float"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="card-elegant rounded-3xl p-12 bg-card/90 backdrop-blur-sm"
+          >
+            <div class="text-6xl mb-6 animate-bounce">📋</div>
+
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+              Aiutaci a creare la soluzione perfetta per il tuo salone
+            </h2>
+
+            <p class="text-xl text-muted-foreground mb-8 leading-relaxed">
+              In meno di 2 minuti, dicci cosa usi oggi per le prenotazioni, cosa
+              ti manca e quale budget investiresti in una soluzione su misura.
+            </p>
+
+            <div
+              class="bg-gradient-to-r from-primary/10 to-primary-glow/10 rounded-2xl p-6 mb-8"
+            >
+              <p
+                class="text-lg font-semibold text-primary flex items-center justify-center gap-2"
+              >
+                💬 "Il tuo parere ci aiuterà a costruire qualcosa di davvero
+                utile!"
+              </p>
+            </div>
+
+            <button
+              onclick="openSurvey()"
+              class="btn-primary text-xl px-12 py-8 rounded-2xl font-bold shadow-2xl hover:shadow-primary/50 group inline-flex items-center gap-3"
+            >
+              🧪 Partecipa al sondaggio
+              <svg
+                class="w-6 h-6 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
+
+            <div
+              class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground"
+            >
+              <div class="flex items-center justify-center gap-2">
+                <div class="w-2 h-2 bg-primary rounded-full animate-glow"></div>
+                Solo 2 minuti
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <div
+                  class="w-2 h-2 bg-primary-glow rounded-full animate-glow"
+                  style="animation-delay: 0.5s"
+                ></div>
+                Completamente anonimo
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <div
+                  class="w-2 h-2 bg-accent rounded-full animate-glow"
+                  style="animation-delay: 1s"
+                ></div>
+                Aiuterai altri saloni
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t border-border py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Logo e Descrizione -->
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold text-gradient mb-4">
+              💅 SalonBooking
+            </h3>
+            <p class="text-muted-foreground mb-4 max-w-md">
+              Il sistema di prenotazione smart per saloni di bellezza e
+              parrucchieri indipendenti. Semplice, elegante, senza commissioni.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.082.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.747 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.99C24.007 5.367 18.641.001 12.017.001z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contatti -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-foreground">Contatti</h4>
+            <div class="space-y-2 text-muted-foreground">
+              <p>📧 info@salonbooking.it</p>
+              <p>📞 +39 02 1234 5678</p>
+              <p>📍 Milano, Italia</p>
+            </div>
+          </div>
+
+          <!-- Link Utili 
+          <div>
+            <h4 class="text-lg font-semibold mb-4 text-foreground">
+              Link Utili
+            </h4>
+            <div class="space-y-2">
+              <a
+                href="#"
+                class="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                class="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Termini di Servizio
+              </a>
+              <a
+                href="#"
+                class="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                FAQ
+              </a>
+              <a
+                href="#"
+                class="block text-muted-foreground hover:text-primary transition-colors"
+              >
+                Supporto
+              </a>
+            </div>
+          </div>
+          -->
+        </div>
+
+        <div
+          class="border-t border-border mt-8 pt-8 text-center text-muted-foreground"
+        >
+          <p>&copy; 2024 SalonBooking. Tutti i diritti riservati.</p>
+          <p class="mt-2 text-sm">
+            Progettato con 💖 per i professionisti della bellezza
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
