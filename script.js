@@ -2,7 +2,7 @@
 
 // Survey functionality
 function openSurvey() {
-  window.open("https://forms.gle/tuo-link-personalizzato", "_blank");
+  window.open("https://tinyurl.com/ai-beauty-center", "_blank");
 }
 
 // Dark mode toggle (optional functionality)
